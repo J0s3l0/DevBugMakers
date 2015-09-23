@@ -8,11 +8,11 @@ public class mov : MonoBehaviour {
 		//Nave avanza o retrocede
         if (Input.GetKey(KeyCode.UpArrow))
         {
-            transform.Translate(new Vector3(0, 0, 0.5f));
+            transform.Translate(new Vector3(0, 0, 1.5f));
         }
         if (Input.GetKey(KeyCode.DownArrow))
         {
-            transform.Translate(new Vector3(0, 0, -0.5f));
+            transform.Translate(new Vector3(0, 0, -1.5f));
         }
 		//Nave rota sobre su propio eje
         if (Input.GetKey(KeyCode.Q))
