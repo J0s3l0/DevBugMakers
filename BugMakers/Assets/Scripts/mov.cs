@@ -8,11 +8,11 @@ public class mov : MonoBehaviour {
     void Update () {
         if (Input.GetKey(KeyCode.W))
         {
-            transform.Translate(new Vector3(0f, 0f, 0.5f));
+            transform.Translate(new Vector3(0f, 0f, 2.5f));
         }
         if (Input.GetKey(KeyCode.S))
         {
-            transform.Translate(new Vector3(0f, 0f, -0.5f));
+            transform.Translate(new Vector3(0f, 0f, -2.5f));
         }
         if (Input.GetKey(KeyCode.UpArrow))
         {
