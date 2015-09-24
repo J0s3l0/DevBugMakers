@@ -4,16 +4,30 @@ using System.Collections;
 public class mov : MonoBehaviour {
     // Update is called once per frame
     Vector3 nuev = new Vector3(0, 1, 0);
-    
+	float speed = 0f;
     void Update () {
-        if (Input.GetKey(KeyCode.W))
-        {
-            transform.Translate(new Vector3(0f, 0f, 2.5f));
-        }
+		if (Input.GetKey (KeyCode.W)) {
+			if(speed < 3.0f)
+			   speed += .01f;
+
+			transform.Translate (new Vector3 (0f, 0f, speed));
+		} 
+		else{
+			if(speed >0.0f)
+			{speed-= 0.03f;}
+			transform.Translate (new Vector3 (0f, 0f, speed));
+		}
         if (Input.GetKey(KeyCode.S))
         {
-            transform.Translate(new Vector3(0f, 0f, -2.5f));
+			if(speed > -3.0f)
+				speed -= .01f;
+            transform.Translate(new Vector3(0f, 0f, speed));
         }
+		else{
+			if(speed <0.0f)
+			{speed+= 0.03f;}
+			transform.Translate (new Vector3 (0f, 0f, speed));
+		}
         if (Input.GetKey(KeyCode.UpArrow))
         {
             if (transform.eulerAngles.x > 345 || transform.eulerAngles.x + 4 < 15)
@@ -53,7 +67,7 @@ public class mov : MonoBehaviour {
                 transform.RotateAround(transform.position, transform.forward, -1.5f);
         }
 
-        transform.Translate(new Vector3(0f, -.35f, 0f));
+        //transform.Translate(new Vector3(0f, -.35f, 0f));
 
 
     }
