@@ -16,10 +16,10 @@ public class creaJugador : MonoBehaviour {
         if (op == 1)
         {
 
-        for (int i = 0; i < 1; i++)
-        {
-            Instantiate(prefab1, new Vector3(469.4584F, 60F, 324F), Quaternion.identity);
-        }
+            for (int i = 0; i < 1; i++)
+            {
+                Instantiate(prefab1, new Vector3(50F, 5F, -20F), transform.rotation);
+            }
             op = 0;
     }
         else if (op == 2)
@@ -27,8 +27,8 @@ public class creaJugador : MonoBehaviour {
 
             for (int i = 0; i < 1; i++)
             {
-                Instantiate(prefab2, new Vector3(469.4584F, 60F, 324F), Quaternion.identity);
-            }
+                Instantiate(prefab2, new Vector3(20F, 5F, -60F), Quaternion.identity);
+                }
             op = 0;
         }
     }
