@@ -23,7 +23,7 @@ public class MisilDispara : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-        armado = true;
+        armado = false;
        
     }
     // Update is called once per frame
@@ -56,15 +56,17 @@ public class MisilDispara : MonoBehaviour
                 Camera.main.cullingMask = -1;
                 clonMisil.transform.parent = this.gameObject.transform;
                 cohete = false;
+                armado = false;
             }
 
-            else if (escudo)
+            else if (escudo && !escudoActivo)
             {
                 Debug.Log("se instancio el escudo");
-                escudoP = (GameObject)Instantiate(efecto_escudo, transform.position + new Vector3(0,5.0f,0), transform.rotation);
+                escudoP = (GameObject)Instantiate(efecto_escudo, transform.position + new Vector3(0, 5.0f, 0), transform.rotation);
                 escudoP.transform.parent = transform;
                 escudo = false;
                 escudoActivo = true;
+                armado = false;
             }
         }
     }
@@ -74,30 +76,33 @@ public class MisilDispara : MonoBehaviour
         Debug.Log("armado");
         
         if (col.tag == "Arma"){
-            arma = (int)Random.Range(0.0f, 6.0f);
-            escudo = true;
-            switch(arma)
+            if (armado == false)
             {
-                case 1:
-                    cohete = true;
-                    break;
-                case 2:
-                    boost = true;
-                    break;
-                case 3:
-                    laser = true;
-                    break;
-                case 4:
-                    escudo = true;
-                    break;
-                case 5:
-                    bomba = true;
-                    break;
-                case 6:
-                    mina = true;
-                    break;
+                arma = (int)Random.Range(0, 2);
+                //escudo = true;
+                switch (arma)
+                {
+                    case 0:
+                        cohete = true;
+                        break;
+                    case 1:
+                        escudo = true;
+                        break;
+                    case 2:
+                        laser = true;
+                        break;
+                    case 3:
+                        boost = true;
+                        break;
+                    case 4:
+                        bomba = true;
+                        break;
+                    case 5:
+                        mina = true;
+                        break;
+                }
+                armado = true;
             }
-            
             Destroy(col.gameObject);
         }
         
