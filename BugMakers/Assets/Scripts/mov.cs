@@ -5,7 +5,10 @@ public class mov : MonoBehaviour {
     // Update is called once per frame
     Vector3 nuev = new Vector3(0, 1, 0);
 	float speed = 0f;
+    private int vueltas;
     void Update () {
+
+
 		if (Input.GetKey (KeyCode.W)) {
 			if(speed < 3.0f)
 			   speed += .01f;
@@ -69,6 +72,23 @@ public class mov : MonoBehaviour {
 
         //transform.Translate(new Vector3(0f, -.35f, 0f));
 
+
+    }
+
+
+    void OnTriggerEnter(Collider col)
+    {
+
+        if (col.tag == "Teleport")
+        {
+            vueltas++;
+            transform.position = new Vector3(50F, 5F, -20F);
+            transform.Rotate(0, 180, 0);
+            if (vueltas == 3)
+            {
+                Application.LoadLevel("nivel2");
+            }
+        }
 
     }
 }
