@@ -28,7 +28,7 @@ public class creaJugador : MonoBehaviour {
             for (int i = 0; i < 1; i++)
             {
                 Instantiate(prefab2, new Vector3(20F, 5F, -60F), Quaternion.identity);
-                }
+            }
             op = 0;
         }
     }

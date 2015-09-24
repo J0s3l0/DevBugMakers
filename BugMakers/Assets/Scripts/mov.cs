@@ -5,7 +5,12 @@ public class mov : MonoBehaviour {
     // Update is called once per frame
     Vector3 nuev = new Vector3(0, 1, 0);
 	float speed = 0f;
-    private int vueltas;
+    private int vueltas=0;
+
+    void Awake()
+    {
+        DontDestroyOnLoad(transform.parent.gameObject);
+    }
     void Update () {
 
 
@@ -81,13 +86,18 @@ public class mov : MonoBehaviour {
 
         if (col.tag == "Teleport")
         {
+            if (vueltas < 2)
+            {
+                transform.position = new Vector3(50F, 5F, -20F);
+                transform.Rotate(0, 180, 0);
+            }
             vueltas++;
-            transform.position = new Vector3(50F, 5F, -20F);
-            transform.Rotate(0, 180, 0);
             if (vueltas == 3)
             {
                 Application.LoadLevel("nivel2");
+
             }
+
         }
 
     }

@@ -13,10 +13,15 @@ public class LoadLevObj : MonoBehaviour {
      }
     public void op(int a)
     {
-        if(a==1)
-        creaJugador.op = 1;
-        else if(a==2)
-                creaJugador.op = 2;
+        if (a == 1)
+        {
+            creaJugador.op = 1;
+        }
+
+        else if (a == 2)
+        {
+            creaJugador.op = 2;
+        }
     }
    
 }
