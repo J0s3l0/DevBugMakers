@@ -5,7 +5,6 @@ public class LoadLevObj : MonoBehaviour {
     // Use this for initialization
      public string level;
     public int opcion;
-	public AudioSource audio;
 	private int aux=0;
      // Update is called once per frame
 	void start()

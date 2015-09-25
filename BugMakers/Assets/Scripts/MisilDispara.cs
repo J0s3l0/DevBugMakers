@@ -4,6 +4,7 @@ using System.Collections;
 public class MisilDispara : MonoBehaviour
 {
     public GameObject efecto_escudo;
+    public AudioSource shield;
     GameObject escudoP;
     int invert = -1;
     public Rigidbody misil;
@@ -32,7 +33,7 @@ public class MisilDispara : MonoBehaviour
         if(escudoActivo)
         {
             contador++;
-            Debug.Log(contador);
+            //Debug.Log(contador);
             if(contador > 100)
             {
                 Destroy(escudoP);
@@ -63,6 +64,7 @@ public class MisilDispara : MonoBehaviour
             {
                 Debug.Log("se instancio el escudo");
                 escudoP = (GameObject)Instantiate(efecto_escudo, transform.position + new Vector3(0, 5.0f, 0), transform.rotation);
+                shield.Play();
                 escudoP.transform.parent = transform;
                 escudo = false;
                 escudoActivo = true;

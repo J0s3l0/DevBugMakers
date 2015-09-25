@@ -9,19 +9,13 @@ public class asteroid : MonoBehaviour {
     public Transform asteroid1;
     public Transform asteroid2;
 
-    // Use this for initialization
-    void Start()
-    {
-
-    }
-
     // Update is called once per frame
     void Update()
     {
         cont++;
         if (cont%11 == 0 )
         {   
-            for (int i = 0; i < 5; i++)
+            for (int i = 0; i < 10; i++)
             {
                 posX = (int)Random.Range(200, 4000);
                 posZ = (int)Random.Range(-2500, 2400);

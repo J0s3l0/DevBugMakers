@@ -11,7 +11,7 @@ public class mov : MonoBehaviour {
 	public AudioSource turbinaUp;
 	public AudioSource turbinaDown;
 
-	private bool turbinaCheck;
+    private bool turbinaCheck;
 
 
     void Awake()
@@ -131,11 +131,20 @@ public class mov : MonoBehaviour {
             vueltas++;
             if (vueltas == 3)
             {
+                transform.position = new Vector3(50F, 5F, -20F);
                 Application.LoadLevel("nivel2");
 
             }
 
         }
+        else if (col.tag == "Pared")
+            speed = 0;
 
     }
+   
 }
+
+
+
+
+//-1102  Z
