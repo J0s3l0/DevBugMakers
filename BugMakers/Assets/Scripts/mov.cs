@@ -7,10 +7,19 @@ public class mov : MonoBehaviour {
 	float speed = 0f;
     private int vueltas=0;
 
+	public AudioSource turbina;
+	public AudioSource turbinaUp;
+	public AudioSource turbinaDown;
+
+	private bool turbinaCheck;
+
+
     void Awake()
     {
         DontDestroyOnLoad(transform.parent.gameObject);
     }
+	
+
     void Update () {
 
 
@@ -19,8 +28,36 @@ public class mov : MonoBehaviour {
 			   speed += .01f;
 
 			transform.Translate (new Vector3 (0f, 0f, speed));
+
+			if (!turbina.isPlaying && !turbinaUp.isPlaying) {
+				turbinaCheck = false;
+				turbinaUp.Play();
+				
+				
+			}
+
+			if(turbinaUp.time > 5) {
+				turbinaUp.Stop();
+				turbina.Play();
+				turbinaCheck = true;
+			}
+
+
+
+
 		} 
 		else{
+
+			turbinaUp.Stop();
+			
+			
+			if(!turbinaDown.isPlaying && turbinaCheck){
+				turbinaCheck = false;
+				turbina.Stop ();
+				turbinaUp.Stop();
+				turbinaDown.Play ();
+			}
+
 			if(speed >0.0f)
 			{speed-= 0.03f;}
 			transform.Translate (new Vector3 (0f, 0f, speed));
