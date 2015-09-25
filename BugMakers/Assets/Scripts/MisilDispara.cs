@@ -5,13 +5,16 @@ public class MisilDispara : MonoBehaviour
 {
     public GameObject efecto_escudo;
     public AudioSource shield;
+    public AudioSource shieldDown;
+    public AudioSource misilSound;
+    public AudioSource powerUpSound;
     GameObject escudoP;
     int invert = -1;
     public Rigidbody misil;
     private Rigidbody clonMisil;
     bool escudoActivo;
-    bool armado;
-    int arma;
+    public static bool armado;
+    public static int arma;
     bool cohete;
     bool boost;
     bool escudo;
@@ -34,10 +37,13 @@ public class MisilDispara : MonoBehaviour
         {
             contador++;
             //Debug.Log(contador);
-            if(contador > 100)
+            if (contador == 100)
+                shieldDown.Play();
+            if (contador > 200)
             {
                 Destroy(escudoP);
                 contador = 0;
+                
                 escudoActivo = false;
             }
         }
@@ -53,7 +59,7 @@ public class MisilDispara : MonoBehaviour
                 posMIsil.z = transform.position.z;
                 Debug.Log(transform.rotation);
                 Rigidbody clonMisil = (Rigidbody)Instantiate(misil, posMIsil, transform.rotation);
-
+                misilSound.Play();
                 Camera.main.cullingMask = -1;
                 clonMisil.transform.parent = this.gameObject.transform;
                 cohete = false;
@@ -63,7 +69,7 @@ public class MisilDispara : MonoBehaviour
             else if (escudo && !escudoActivo)
             {
                 Debug.Log("se instancio el escudo");
-                escudoP = (GameObject)Instantiate(efecto_escudo, transform.position + new Vector3(0, 5.0f, 0), transform.rotation);
+                escudoP = (GameObject)Instantiate(efecto_escudo, transform.position + new Vector3(0, 3.0f, 0), transform.rotation);
                 shield.Play();
                 escudoP.transform.parent = transform;
                 escudo = false;
@@ -80,6 +86,7 @@ public class MisilDispara : MonoBehaviour
         if (col.tag == "Arma"){
             if (armado == false)
             {
+                powerUpSound.Play();
                 arma = (int)Random.Range(0, 2);
                 //escudo = true;
                 switch (arma)

@@ -4,6 +4,7 @@ using System.Collections;
 
 public class ExplotaMisil : MonoBehaviour {
     public GameObject explosion;
+    public AudioSource explotaSound;
     public ParticleSystem propulsor;
     float velocidad = 0;
     int vida = 0;
@@ -41,6 +42,7 @@ public class ExplotaMisil : MonoBehaviour {
         if (vida == 300)
         {
             Instantiate(explosion, transform.position, transform.rotation);
+            explotaSound.Play();
             Destroy(gameObject);
         }
         transform.Translate(0, 0, velocidad);
@@ -73,6 +75,8 @@ public class ExplotaMisil : MonoBehaviour {
     void OnTriggerEnter(Collider other)
     {
         Instantiate(explosion, transform.position, transform.rotation);
+        explotaSound.Play();
         Destroy(gameObject);
+        
     }
 }

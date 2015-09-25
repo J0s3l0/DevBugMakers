@@ -26,70 +26,16 @@ public class ArmaMueve : MonoBehaviour
     void Update()
     {
         Debug.Log(contador);
-        if (contador >= 0 && contador < Time.deltaTime * 3000)
+        if (MisilDispara.armado== true)
         {
-
-            if (cambiado == false)
-            {
-                if (contador < Time.deltaTime * 400)
-                {
-                    actual.sprite = Sprite1;
-                    cambiado = true;
-                }
-                else if (contador < Time.deltaTime * 900)
-                {
-                    actual.sprite = Sprite2;
-                    cambiado = true;
-                }
-                else if (contador < Time.deltaTime * 1400)
-                {
-                    actual.sprite = Sprite3;
-                    cambiado = true;
-                }
-                else if (contador < Time.deltaTime * 1900)
-                {
-                    actual.sprite = Sprite4;
-                    cambiado = true;
-                }
-                else if (contador < Time.deltaTime * 2400)
-                {
-                    actual.sprite = Sprite5;
-                    cambiado = true;
-                }
-                else
-                {
-                    actual.sprite = Sprite6;
-                    cambiado = true;
-                }
-            }
-            else
-            {
-                if (contador > Time.deltaTime * 400 && contador < Time.deltaTime * 500)
-                    cambiado = false;
-                else if (contador > Time.deltaTime * 900 && contador < Time.deltaTime * 1000)
-                    cambiado = false;
-                else if (contador > Time.deltaTime * 1400 && contador < Time.deltaTime * 1500)
-                    cambiado = false;
-                else if (contador > Time.deltaTime * 1900 && contador < Time.deltaTime * 2000)
-                    cambiado = false;
-                else if (contador > Time.deltaTime * 2400 && contador < Time.deltaTime * 2500)
-                    cambiado = false;
-            }
-
-
+           
+            if (MisilDispara.arma == 0)
+                actual.sprite = Sprite2;
+            else if (MisilDispara.arma == 1)
+                actual.sprite = Sprite6;
+            contador++;
         }
-
-
-
         else
-        {
-
-            cambiado = false;
-            contador = 0;
-
-        }
-
-        contador++;
-
+            actual.sprite = null;
     }
 }

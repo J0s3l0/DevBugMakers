@@ -10,7 +10,12 @@ public class mov : MonoBehaviour {
 	public AudioSource turbina;
 	public AudioSource turbinaUp;
 	public AudioSource turbinaDown;
-
+    public AudioSource choca1;
+    public AudioSource choca2;
+    public AudioSource choca3;
+    public AudioSource finalLap;
+    public static int vida;
+    
     private bool turbinaCheck;
 
 
@@ -19,6 +24,10 @@ public class mov : MonoBehaviour {
         DontDestroyOnLoad(transform.parent.gameObject);
     }
 	
+    void Start()
+    {
+        vida = 100;
+    }
 
     void Update () {
 
@@ -129,17 +138,40 @@ public class mov : MonoBehaviour {
                 transform.Rotate(0, 180, 0);
             }
             vueltas++;
+
             if (vueltas == 3)
             {
                 transform.position = new Vector3(50F, 5F, -20F);
                 Application.LoadLevel("nivel2");
 
             }
+            else if (vueltas == 2)
+            {
+                finalLap.Play();
+            }
 
         }
         else if (col.tag == "Pared")
+        {
             speed = 0;
+            if(vida>=10)
+                vida -= 10;
+            int random = Random.Range(0, 3);
+            switch (random)
+            {
+                case 0:
+                    choca1.Play();
+                    break;
+                case 1:
+                    choca2.Play();
+                    break;
+                case 2:
+                    choca3.Play();
+                    break;
+            }
+           
 
+        }
     }
    
 }

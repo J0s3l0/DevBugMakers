@@ -25,8 +25,10 @@ public class BarraDeVida : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
+        currentHealth = mov.vida;
 		healthTransform.position = new Vector3(((maxValuePos - minValuePos) / 100) * currentHealth + minValuePos, cachedY);
-		if (currentHealth > maxHealth / 2) {
+        Debug.Log(currentHealth);
+        if (currentHealth > maxHealth / 2) {
 			colorBarra.color= new Color32 (0,120,120, 255);
 		} else {
 			if(currentHealth> maxHealth/3)
@@ -34,10 +36,6 @@ public class BarraDeVida : MonoBehaviour {
 			else
 				colorBarra.color = new Color32 (150,0,75, 255);
 		}
-		if(Input.GetKeyDown(KeyCode.Y))
-			currentHealth-=5;
-		if(Input.GetKeyDown(KeyCode.U))
-			currentHealth+=5;
 
 	}
 }
